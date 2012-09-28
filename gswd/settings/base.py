@@ -92,6 +92,11 @@ MIDDLEWARE_CLASSES = (
     "django.middleware.clickjacking.XFrameOptionsMiddleware",
 )
 
+AUTHENTICATION_BACKENDS = (
+    "social_auth.backends.contrib.github.GithubBackend",
+    "django.contrib.auth.backends.ModelBackend"
+)
+
 ROOT_URLCONF = "gswd.urls"
 
 # Python dotted path to the WSGI application used by Django's runserver.
@@ -103,7 +108,7 @@ TEMPLATE_DIRS = (
     # Don't forget to use absolute paths, not relative paths.
 )
 
-INSTALLED_APPS = (
+DJANGO_APPS = (
     "django.contrib.auth",
     "django.contrib.contenttypes",
     "django.contrib.sessions",
@@ -112,9 +117,17 @@ INSTALLED_APPS = (
     "django.contrib.staticfiles",
     "django.contrib.admin",
     "django.contrib.admindocs",
+)
+
+THIRD_PARTY_APPS = (
     "gunicorn",
     "south",
+    "social_auth",
 )
+
+OUR_APPS = ()
+
+INSTALLED_APPS = DJANGO_APPS + THIRD_PARTY_APPS + OUR_APPS
 
 # A sample logging configuration. The only tangible logging
 # performed by this configuration is to send an email to
