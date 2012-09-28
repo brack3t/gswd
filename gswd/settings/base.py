@@ -142,7 +142,9 @@ THIRD_PARTY_APPS = (
     "social_auth",
 )
 
-OUR_APPS = ()
+OUR_APPS = (
+    "qa",
+)
 
 INSTALLED_APPS = DJANGO_APPS + THIRD_PARTY_APPS + OUR_APPS
 
