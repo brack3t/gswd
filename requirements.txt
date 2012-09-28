@@ -9,3 +9,4 @@ South==0.7.6
 redis==2.6.2
 django-heroku-postgresify==0.2
 django-social-auth==0.7.6
+django-braces==0.1.7
