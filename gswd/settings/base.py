@@ -9,7 +9,8 @@ DEBUG = False
 TEMPLATE_DEBUG = DEBUG
 
 ADMINS = (
-    ('Kenneth Love', 'kenneth@gettingstartedwithdjango.com'),
+    ("Kenneth Love", "kenneth@gettingstartedwithdjango.com"),
+    ("Chris Jones", "chris@brack3t.com")
 )
 
 MANAGERS = ADMINS
