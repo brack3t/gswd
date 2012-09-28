@@ -1,24 +1,16 @@
 # Django settings for gswd project.
+from postgresify import postgresify
 
-DEBUG = True
+DEBUG = False
 TEMPLATE_DEBUG = DEBUG
 
 ADMINS = (
-    # ('Your Name', 'your_email@example.com'),
+    ('Kenneth Love', 'kenneth@gettingstartedwithdjango.com'),
 )
 
 MANAGERS = ADMINS
 
-DATABASES = {
-    "default": {
-        "ENGINE": "django.db.backends.", # Add 'postgresql_psycopg2', 'mysql', 'sqlite3' or 'oracle'.
-        "NAME": '',                      # Or path to database file if using sqlite3.
-        "USER": '',                      # Not used with sqlite3.
-        "PASSWORD": '',                  # Not used with sqlite3.
-        "HOST": '',                      # Set to empty string for localhost. Not used with sqlite3.
-        "PORT": '',                      # Set to empty string for default. Not used with sqlite3.
-    }
-}
+DATABASES = postgresify()
 
 # Local time zone for this installation. Choices can be found here:
 # http://en.wikipedia.org/wiki/List_of_tz_zones_by_name
@@ -97,7 +89,7 @@ MIDDLEWARE_CLASSES = (
     "django.contrib.auth.middleware.AuthenticationMiddleware",
     "django.contrib.messages.middleware.MessageMiddleware",
     # Uncomment the next line for simple clickjacking protection:
-    # 'django.middleware.clickjacking.XFrameOptionsMiddleware',
+    "django.middleware.clickjacking.XFrameOptionsMiddleware",
 )
 
 ROOT_URLCONF = "gswd.urls"
@@ -121,6 +113,7 @@ INSTALLED_APPS = (
     "django.contrib.admin",
     "django.contrib.admindocs",
     "gunicorn",
+    "south",
 )
 
 # A sample logging configuration. The only tangible logging
