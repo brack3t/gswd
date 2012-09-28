@@ -1,12 +1,11 @@
 from .base import *
 
 try:
-    from .local import *
+    from .secret import *
 except ImportError:
     pass
 
 try:
-    from .secret import *
+    from .local import *
 except ImportError:
     pass
-    
