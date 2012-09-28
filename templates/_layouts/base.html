@@ -1,11 +1,21 @@
 <!doctype html>
 <html>
 <head>
-    <title>Getting Started with Django</title>
+    <title>{% block page_title %} | {% endblock %}Getting Started with Django</title>
 
     <link href="{{ STATIC_URL }}css/bootstrap.css" rel="stylesheet">
     <link href="{{ STATIC_URL }}css/gswd.css" rel="stylesheet">
+    {% block extra_css %}{% endblock %}
+    {% block head_js %}{% endblock %}
 </head>
 <body>
+    <div class="container-fluid">
+        <header aria-role="banner">
+            <h1>Getting Started with Django</h1>
+        </header>
+        
+        {% block content %}{% endblock %}
+    </div>
+    {% block body_js %}{% endblock %}
 </body>
 </html>
