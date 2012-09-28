@@ -9,7 +9,8 @@ DEBUG = False
 TEMPLATE_DEBUG = DEBUG
 
 ADMINS = (
-    ('Kenneth Love', 'kenneth@gettingstartedwithdjango.com'),
+    ("Kenneth Love", "kenneth@gettingstartedwithdjango.com"),
+    ("Chris Jones", "chris@brack3t.com")
 )
 
 MANAGERS = ADMINS
@@ -73,9 +74,6 @@ STATICFILES_FINDERS = (
     "django.contrib.staticfiles.finders.AppDirectoriesFinder",
 #    'django.contrib.staticfiles.finders.DefaultStorageFinder',
 )
-
-# Make this unique, and don't share it with anybody.
-SECRET_KEY = "cjpghbg5#&amp;#4+x^x155c+i%c7m*&amp;m^$$@67v=ry8j-$4*%6err"
 
 # List of callables that know how to import templates from various sources.
 TEMPLATE_LOADERS = (
