@@ -90,14 +90,33 @@ MIDDLEWARE_CLASSES = (
     "django.middleware.csrf.CsrfViewMiddleware",
     "django.contrib.auth.middleware.AuthenticationMiddleware",
     "django.contrib.messages.middleware.MessageMiddleware",
-    # Uncomment the next line for simple clickjacking protection:
     "django.middleware.clickjacking.XFrameOptionsMiddleware",
+)
+
+TEMPLATE_CONTEXT_PROCESSORS = (
+    "django.contrib.auth.context_processors.auth",
+    "django.core.context_processors.debug",
+    "django.core.context_processors.i18n",
+    "django.core.context_processors.media",
+    "django.core.context_processors.static",
+    "django.core.context_processors.tz",
+    "django.contrib.messages.context_processors.messages",
+    "social_auth.context_processors.social_auth_by_name_backends",
+    "social_auth.context_processors.social_auth_backends",
+    "social_auth.context_processors.social_auth_by_type_backends",
+    "social_auth.context_processors.social_auth_login_redirect",
 )
 
 AUTHENTICATION_BACKENDS = (
     "social_auth.backends.contrib.github.GithubBackend",
     "django.contrib.auth.backends.ModelBackend"
 )
+
+LOGIN_URL = "/login-form/"
+LOGIN_REDIRECT_URL = "/"
+LOGIN_ERROR_URL = "/login-error/"
+SOCIAL_AUTH_COMPLETE_URL_NAME = "socialauth_complete"
+SOCIAL_AUTH_ASSOCIATE_URL_NAME = "socialauth_associate_complete"
 
 ROOT_URLCONF = "gswd.urls"
 
