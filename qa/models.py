@@ -18,6 +18,9 @@ class Question(models.Model):
         return u"%s" % self.title
 
     def save(self, *args, **kwargs):
+        """
+        Create the slug if not yet set.
+        """
         if not self.slug:
             self.slug = slugify(self.title)
 
