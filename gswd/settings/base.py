@@ -148,6 +148,7 @@ THIRD_PARTY_APPS = (
     "gunicorn",
     "south",
     "social_auth",
+    "micawber.contrib.mcdjango",
 )
 
 OUR_APPS = (

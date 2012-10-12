@@ -1,0 +1,18 @@
+{% extends "_layouts/base.html" %}
+{% load lesson_tags micawber_tags %}
+
+{% block page_title %}{{ object.title }} | Lessons {{ block.super }}{% endblock %}
+
+{% block content %}
+<article>
+    <header>
+        <h1>{{ object.title }}</h1>
+        <p><time datetime="{{ object.updated_at }}">{{ object.updated_at|date:"M j, Y" }}</time></p>
+    </header>
+    {% get_translation object request.session.lang|default:"en" as translation %}
+    <section>
+        {{ object.video|oembed:"960x720" }}
+        {{ translation.body_html|safe }}
+    </section>
+</article>
+{% endblock %}

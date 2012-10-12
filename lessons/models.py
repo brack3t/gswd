@@ -39,8 +39,11 @@ class Translation(models.Model):
     intro_html = models.TextField(blank=True, default='', editable=False)
     body = models.TextField()
     body_html = models.TextField(blank=True, default='', editable=False)
-    transcript = models.TextField()
+    transcript = models.TextField(blank=True)
     transcript_html = models.TextField(blank=True, default='', editable=False)
+
+    def __unicode__(self):
+        return '"%s" in %s' % (self.lesson.title, self.get_language_display())
 
     def save(self, *args, **kwargs):
         self.intro_html = mi.html(self.intro,

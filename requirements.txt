@@ -12,3 +12,4 @@ django-social-auth==0.7.6
 django-braces==0.1.7
 misaka==1.0.2
 django-grappelli=2.4.2
+micawber==0.2.5
