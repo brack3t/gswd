@@ -1,4 +1,4 @@
 html,body{background:none;min-height:100%;}
 html{background:url(/static/img/graphy.png);background-size:80px 160px;}
 h1.gswd{font-family:"Rock Salt","Marker Felt","Helvetica Neue",helvetica,arial,cursive;}
-header[rel="banner"],#banner{background:url(/static/img/gswdlogo.svg) center center no-repeat;background-size:99.999% 200px;height:200px;margin-top:2em;}header[rel="banner"] a,#banner a{display:block;height:100%;line-height:200px;text-align:center;text-indent:-20000em;}
+header[rel="banner"],#header{background:url(/static/img/gswdlogo.svg) center center no-repeat;background-size:99.999% 200px;height:200px;margin-top:2em;}header[rel="banner"] a,#header a{display:block;height:100%;line-height:200px;text-align:center;text-indent:-20000em;}

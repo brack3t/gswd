@@ -2,6 +2,9 @@
 {% load lesson_tags micawber_tags %}
 
 {% block page_title %}{{ object.title }} | Lessons {{ block.super }}{% endblock %}
+{% block extra_css %}
+<link rel="stylesheet" href="http://yandex.st/highlightjs/7.2/styles/tomorrow.min.css">
+{% endblock %}
 
 {% block content %}
 <article>
@@ -29,4 +32,14 @@
         </ul>
     </footer>
 </article>
+{% endblock %}
+
+{% block body_js %}
+<script src="http://yandex.st/highlightjs/7.2/highlight.min.js"></script>
+<script>
+    $(function() {
+        hljs.tabReplace = '    ';
+        hljs.initHighlighting();
+    });
+</script>
 {% endblock %}

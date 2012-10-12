@@ -1,11 +1,16 @@
 {% extends "_layouts/base.html" %}
+{% load lesson_tags %}
 
 {% block page_title %}Lessons {{ block.super }}{% endblock %}
 
 {% block content %}
 <ol>
     {% for lesson in object_list %}
-    <li><a href="{{ lesson.get_absolute_url }}">{{ lesson.title }}</a></li>
+    <li>
+        <a href="{{ lesson.get_absolute_url }}">{{ lesson.title }}</a>
+        {% get_translation lesson request.session.lang|default:"en" as translation %}
+        {{ translation.intro_html|safe }}
+    </li>
     {% empty %}
     <li>Feed me lessons!</li>
     {% endfor %}

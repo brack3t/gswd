@@ -6,11 +6,7 @@
 <p class="lead">Welcome fucking home.</p>
 
 <div class="row-fluid">
-    {% if user.is_authenticated %}
-    Hi there, {{ user.get_full_name }}. <a href="{% url logout %}">Logout</a>
-    {% else %}
-    <a href="{% url socialauth_begin 'github' %}?{{ redirect_querystring }}">Go to your account</a>
-    {% endif %}
+    
 </div>
 
 <div class="row-fluid">
@@ -26,7 +22,7 @@
         {% if lessons %}
         <ol>
             {% for lesson in lessons %}
-            <li>{{ lesson.title }}</li>
+            <li><a href="{{ lesson.get_absolute_url }}">{{ lesson.title }}</a></li>
             {% endfor %}
         </ol>
         {% else %}
