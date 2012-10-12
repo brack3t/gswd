@@ -1,0 +1,13 @@
+{% extends "_layouts/base.html" %}
+
+{% block page_title %}Lessons {{ block.super }}{% endblock %}
+
+{% block content %}
+<ol>
+    {% for lesson in object_list %}
+    <li><a href="{{ lesson.get_absolute_url }}">{{ lesson.title }}</a></li>
+    {% empty %}
+    <li>Feed me lessons!</li>
+    {% endfor %}
+</ol>
+{% endblock %}

@@ -11,6 +11,9 @@ urlpatterns = patterns('',
 
     url(r'^admin/doc/', include('django.contrib.admindocs.urls')),
     url(r'^admin/', include(admin.site.urls)),
+    url(r'^grappelli/', include('grappelli.urls')),
+
+    url(r'^lessons/', include('lessons.urls', namespace='lessons')),
 
     url(r'', include('social_auth.urls')),
     url(r'^$', HomeView.as_view(), name="home"),

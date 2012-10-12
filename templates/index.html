@@ -1,5 +1,7 @@
 {% extends "_layouts/base.html" %}
 
+{% block page_title %}{% endblock %}
+
 {% block content %}
 <p class="lead">Welcome fucking home.</p>
 
@@ -9,6 +11,29 @@
     {% else %}
     <a href="{% url socialauth_begin 'github' %}?{{ redirect_querystring }}">Go to your account</a>
     {% endif %}
+</div>
+
+<div class="row-fluid">
+    <div class="span4">
+        <p>left side</p>
+    </div>
+    <div class="span4">
+        <p>center</p>
+    </div>
+    <div class="span4">
+        {% load lesson_tags %}
+        {% all_lessons as lessons %}
+        {% if lessons %}
+        <ol>
+            {% for lesson in lessons %}
+            <li>{{ lesson.title }}</li>
+            {% endfor %}
+        </ol>
+        {% else %}
+        <p>right side</p>
+        {% endif %}
+        <a href="{% url lessons:list %}">All Lessons</a>
+    </div>
 </div>
 
 {% endblock %}
