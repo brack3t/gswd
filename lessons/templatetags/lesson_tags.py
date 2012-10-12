@@ -12,4 +12,9 @@ def all_lessons():
 
 @register.assignment_tag
 def get_translation(lesson, language):
-    return Translation.objects.get(lesson_id=lesson.pk, language=language)
+    try:
+        translation = Translation.objects.get(
+            lesson_id=lesson.pk, language=language)
+    except Translation.DoesNotExist:
+        translation = None
+    return translation

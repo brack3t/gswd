@@ -14,5 +14,19 @@
         {{ object.video|oembed:"960x720" }}
         {{ translation.body_html|safe }}
     </section>
+    <footer>
+        <ul class="pager">
+        {% if object.get_previous_by_updated_at %}
+            {% with object.get_previous_by_updated_at as prev %}
+            <li class="previous"><a href="{{ prev.get_absolute_url }}">&larr; {{ prev.title }}</a></li>
+            {% endwith %}
+        {% endif %}
+        {% if object.get_next_by_updated_at %}
+            {% with object.get_next_by_updated_at as next %}
+            <li class="next"><a href="{{ next.get_absolute_url }}">{{ next.title }} &rarr;</a></li>
+            {% endwith %}
+        {% endif %}
+        </ul>
+    </footer>
 </article>
 {% endblock %}
