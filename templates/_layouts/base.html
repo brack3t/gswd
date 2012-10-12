@@ -13,7 +13,7 @@
 <body>
     <div class="container-fluid">
         <header aria-role="banner" rel="banner" id="banner">
-            <h1 class="gswd">Getting Started with Django</h1>
+            <h1 class="gswd"><a href="/">Getting Started with Django</a></h1>
         </header>
 
         <div class="navbar">
@@ -25,11 +25,10 @@
                         <span class="icon-bar"></span>
                     </a>
 
-                    <a href="{% url home %}">Home</a>
-
                     <div class="nav-collapse">
                         <ul class="nav">
                             <li><a href="{% url home %}">Home</a></li>
+                            <li><a href="{% url lessons:list %}">Lessons</a></li>
                         </ul>
                     </div>
                 </div>
