@@ -1,0 +1,45 @@
+{% extends "_layouts/base.html" %}
+{% load lesson_tags micawber_tags %}
+
+{% block page_title %}{{ object.title }} | Lessons {{ block.super }}{% endblock %}
+{% block extra_css %}
+<link rel="stylesheet" href="http://yandex.st/highlightjs/7.2/styles/tomorrow.min.css">
+{% endblock %}
+
+{% block content %}
+<article>
+    <header>
+        <h1>{{ object.title }}</h1>
+        <p><time datetime="{{ object.updated_at }}">{{ object.updated_at|date:"M j, Y" }}</time></p>
+    </header>
+    {% get_translation object LANGUAGE_CODE|default:"en" as translation %}
+    <section>
+        {{ object.video|oembed:"960x720" }}
+        {{ translation.body_html|safe }}
+    </section>
+    <footer>
+        <ul class="pager">
+        {% if object.get_previous_by_updated_at %}
+            {% with object.get_previous_by_updated_at as prev %}
+            <li class="previous"><a href="{{ prev.get_absolute_url }}">&larr; {{ prev.title }}</a></li>
+            {% endwith %}
+        {% endif %}
+        {% if object.get_next_by_updated_at %}
+            {% with object.get_next_by_updated_at as next %}
+            <li class="next"><a href="{{ next.get_absolute_url }}">{{ next.title }} &rarr;</a></li>
+            {% endwith %}
+        {% endif %}
+        </ul>
+    </footer>
+</article>
+{% endblock %}
+
+{% block body_js %}
+<script src="http://yandex.st/highlightjs/7.2/highlight.min.js"></script>
+<script>
+    $(function() {
+        hljs.tabReplace = '    ';
+        hljs.initHighlighting();
+    });
+</script>
+{% endblock %}

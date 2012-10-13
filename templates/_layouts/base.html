@@ -3,19 +3,93 @@
 <head>
     <title>{% block page_title %} | {% endblock %}Getting Started with Django</title>
 
+    <link href="http://fonts.googleapis.com/css?family=Rock+Salt|Anonymous+Pro" rel="stylesheet">
     <link href="{{ STATIC_URL }}css/bootstrap.css" rel="stylesheet">
     <link href="{{ STATIC_URL }}css/gswd.css" rel="stylesheet">
+    <link href="{{ STATIC_URL }}css/retina.css" rel="stylesheet">
     {% block extra_css %}{% endblock %}
     {% block head_js %}{% endblock %}
 </head>
 <body>
+    {% load i18n %}
     <div class="container-fluid">
-        <header aria-role="banner">
-            <h1>Getting Started with Django</h1>
+        <header aria-role="banner" rel="banner" id="header">
+            <h1 class="gswd"><a href="/">Getting Started with Django</a></h1>
         </header>
-        
+
+        <div class="navbar">
+            <div class="navbar-inner">
+                <div class="container">
+                    <a class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse">
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                    </a>
+
+                    <div class="nav-collapse">
+                        <ul class="nav">
+                            <li><a href="{% url home %}">{% trans "Home" %}</a></li>
+                            <li><a href="{% url lessons:list %}">{% trans "Lessons" %}</a></li>
+                        </ul>
+                        <form class="navbar-form form-search pull-left" action="#" method="GET">
+                            <div class="input-append">
+                                <input type="search" class="input-medium search-query" name="q">
+                                <button type="submit" class="btn">{% trans "Search" %}</button>
+                            </div>
+                        </form>
+                        <ul class="nav">
+                            <li class="divider-vertical"></li>
+                        </ul>
+                        <form class="navbar-form pull-left" action="/i18n/setlang/" method="post">
+                            {% csrf_token %}
+                            <input name="next" type="hidden" value="{{ redirect_to }}">
+                            <select name="language">
+                            {% get_language_info_list for LANGUAGES as languages %}
+                            {% for language in languages %}
+                                <option value="{{ language.code }}">{{ language.name_local }} ({{ language.code }})</option>
+                            {% endfor %}
+                            </select>
+                            <input type="submit" value="Go" class="btn">
+                        </form>
+                        {{ redirect_to }}
+                        <ul class="nav pull-right">
+                            <li class="dropdown">
+                                <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+                                    {% trans "Account" %}
+                                    <b class="caret"></b>
+                                </a>
+                                <ul class="dropdown-menu">
+                                    {% if user.is_authenticated %}
+                                    <li><a href="{% url logout %}">{% trans "Logout" %}</a></li>
+                                    {% else %}
+                                    <li><a href="{% url socialauth_begin 'github' %}?{{ redirect_querystring }}">{% trans "Go to your account" %}</a></li>
+                                    {% endif %}
+                                </ul>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
         {% block content %}{% endblock %}
+
+        <footer aria-role="banner" role="banner" id="footer">
+            <p>&copy; {% now "Y" %} Brack3t {% trans "and all contributors." %}</p>
+        </footer>
     </div>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/1.8.2/jquery.min.js"></script>
+    <script src="{{ STATIC_URL }}js/bootstrap/bootstrap-transition.js"></script>
+    <script src="{{ STATIC_URL }}js/bootstrap/bootstrap-alert.js"></script>
+    <script src="{{ STATIC_URL }}js/bootstrap/bootstrap-modal.js"></script>
+    <script src="{{ STATIC_URL }}js/bootstrap/bootstrap-dropdown.js"></script>
+    <script src="{{ STATIC_URL }}js/bootstrap/bootstrap-tab.js"></script>
+    <script src="{{ STATIC_URL }}js/bootstrap/bootstrap-tooltip.js"></script>
+    <script src="{{ STATIC_URL }}js/bootstrap/bootstrap-popover.js"></script>
+    <script src="{{ STATIC_URL }}js/bootstrap/bootstrap-button.js"></script>
+    <script src="{{ STATIC_URL }}js/bootstrap/bootstrap-collapse.js"></script>
+    <script src="{{ STATIC_URL }}js/bootstrap/bootstrap-affix.js"></script>
     {% block body_js %}{% endblock %}
 </body>
 </html>

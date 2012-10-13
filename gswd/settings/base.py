@@ -77,14 +77,18 @@ STATICFILES_FINDERS = (
 
 # List of callables that know how to import templates from various sources.
 TEMPLATE_LOADERS = (
+    # ("django.template.loaders.cached.Loader", (
+    #     "django.template.loaders.filesystem.Loader",
+    #     "django.template.loaders.app_directories.Loader",
+    # )),
     "django.template.loaders.filesystem.Loader",
     "django.template.loaders.app_directories.Loader",
-#     'django.template.loaders.eggs.Loader',
 )
 
 MIDDLEWARE_CLASSES = (
-    "django.middleware.common.CommonMiddleware",
     "django.contrib.sessions.middleware.SessionMiddleware",
+    "django.middleware.locale.LocaleMiddleware",
+    "django.middleware.common.CommonMiddleware",
     "django.middleware.csrf.CsrfViewMiddleware",
     "django.contrib.auth.middleware.AuthenticationMiddleware",
     "django.contrib.messages.middleware.MessageMiddleware",
@@ -93,6 +97,7 @@ MIDDLEWARE_CLASSES = (
 
 TEMPLATE_CONTEXT_PROCESSORS = (
     "django.contrib.auth.context_processors.auth",
+    "django.core.context_processors.request",
     "django.core.context_processors.debug",
     "django.core.context_processors.i18n",
     "django.core.context_processors.media",
@@ -110,6 +115,15 @@ AUTHENTICATION_BACKENDS = (
     "django.contrib.auth.backends.ModelBackend"
 )
 
+LANGUAGES = (
+    ('en', 'English'),
+    ('es', 'Espanol'),
+)
+
+LOCALE_PATHS = (
+    root("locale"),
+)
+
 LOGIN_URL = "/login-form/"
 LOGIN_REDIRECT_URL = "/"
 LOGIN_ERROR_URL = "/login-error/"
@@ -123,6 +137,10 @@ WSGI_APPLICATION = "gswd.wsgi.application"
 
 TEMPLATE_DIRS = (
     root("templates"),
+)
+
+GRAPPELLI_APPS = (
+    "grappelli",
 )
 
 DJANGO_APPS = (
@@ -140,13 +158,15 @@ THIRD_PARTY_APPS = (
     "gunicorn",
     "south",
     "social_auth",
+    "micawber.contrib.mcdjango",
 )
 
 OUR_APPS = (
+    "lessons",
     "qa",
 )
 
-INSTALLED_APPS = DJANGO_APPS + THIRD_PARTY_APPS + OUR_APPS
+INSTALLED_APPS = GRAPPELLI_APPS + DJANGO_APPS + THIRD_PARTY_APPS + OUR_APPS
 
 # A sample logging configuration. The only tangible logging
 # performed by this configuration is to send an email to

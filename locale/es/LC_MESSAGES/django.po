@@ -1,0 +1,59 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: PACKAGE VERSION\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2012-10-12 17:44-0700\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"Language: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=(n != 1)\n"
+
+#: gswd/urls.py:21
+msgid "^logout/$"
+msgstr "^finalizar_la_sesión/$"
+
+#: gswd/urls.py:22
+msgid "^lessons/"
+msgstr "^lecciones/"
+
+#: templates/index.html:32
+msgid "All Lessons"
+msgstr "Todas las lecciones"
+
+#: templates/_layouts/base.html:31
+msgid "Home"
+msgstr "Casa"
+
+#: templates/_layouts/base.html:32
+msgid "Lessons"
+msgstr "Lecciones"
+
+#: templates/_layouts/base.html:37
+msgid "Search"
+msgstr "Buscar"
+
+#: templates/_layouts/base.html:57
+msgid "Account"
+msgstr "Cuenta"
+
+#: templates/_layouts/base.html:62
+msgid "Logout"
+msgstr "Finalizar la sesión"
+
+#: templates/_layouts/base.html:64
+msgid "Go to your account"
+msgstr "Ir a su cuenta"
+
+#: templates/_layouts/base.html:78
+msgid "and all contributors."
+msgstr "y todos los contribuyentes"
