@@ -86,8 +86,9 @@ TEMPLATE_LOADERS = (
 )
 
 MIDDLEWARE_CLASSES = (
-    "django.middleware.common.CommonMiddleware",
     "django.contrib.sessions.middleware.SessionMiddleware",
+    "django.middleware.locale.LocaleMiddleware",
+    "django.middleware.common.CommonMiddleware",
     "django.middleware.csrf.CsrfViewMiddleware",
     "django.contrib.auth.middleware.AuthenticationMiddleware",
     "django.contrib.messages.middleware.MessageMiddleware",
@@ -112,6 +113,15 @@ TEMPLATE_CONTEXT_PROCESSORS = (
 AUTHENTICATION_BACKENDS = (
     "social_auth.backends.contrib.github.GithubBackend",
     "django.contrib.auth.backends.ModelBackend"
+)
+
+LANGUAGES = (
+    ('en', 'English'),
+    ('es', 'Espanol'),
+)
+
+LOCALE_PATHS = (
+    root("locale"),
 )
 
 LOGIN_URL = "/login-form/"

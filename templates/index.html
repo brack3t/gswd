@@ -1,4 +1,5 @@
 {% extends "_layouts/base.html" %}
+{% load i18n %}
 
 {% block page_title %}{% endblock %}
 
@@ -28,7 +29,7 @@
         {% else %}
         <p>right side</p>
         {% endif %}
-        <a href="{% url lessons:list %}">All Lessons</a>
+        <a href="{% url lessons:list %}">{% trans "All Lessons" %}</a>
     </div>
 </div>
 
