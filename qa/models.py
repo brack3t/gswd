@@ -2,6 +2,9 @@ from django.contrib.auth.models import User
 from django.db import models
 from django.template.defaultfilters import slugify
 
+import redis
+red = redis.StrictRedis(host="localhost", port=6379, db=0)
+
 
 class Question(models.Model):
     """
@@ -15,7 +18,7 @@ class Question(models.Model):
     slug = models.SlugField(db_index=True, editable=False, max_length=255)
 
     def __unicode__(self):
-        return u"%s" % self.title
+        return self.title
 
     def save(self, *args, **kwargs):
         """
@@ -25,6 +28,10 @@ class Question(models.Model):
             self.slug = slugify(self.title)
 
         super(Question, self).save(*args, **kwargs)
+
+    @property
+    def redis_key(self):
+        return u"question:%d" % self.pk
 
 
 class Answer(models.Model):
@@ -36,6 +43,38 @@ class Answer(models.Model):
     answer = models.TextField()
     created_at = models.DateTimeField(auto_now_add=True, editable=False)
     updated_at = models.DateTimeField(auto_now=True, editable=False)
+    accepted = models.BooleanField(default=False)
+
+    def __unicode__(self):
+        return u"%s - %s" % (self.user.get_full_name(), self.question.title)
+
+    def save(self, *args, **kwargs):
+        """
+        If new answer, add answer to the zcard with a score of 0
+        """
+        create_key = False
+
+        if not self.pk:
+            create_key = True
+
+        super(Answer, self).save(*args, **kwargs)
+
+        if create_key:
+            red.zadd(self.question.redis_key, 0, self.pk)
+
+    @property
+    def upvote(self):
+        """
+        Increment the answers score by 1
+        """
+        return red.zincrby(self.question.redis_key, self.pk, 1)
+
+    @property
+    def rank(self):
+        """
+        Return the answer's score from Redis
+        """
+        return red.zrevrank(self.question.redis_key, self.pk)
 
 
 class AnswerComment(models.Model):
