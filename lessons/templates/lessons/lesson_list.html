@@ -8,7 +8,7 @@
     {% for lesson in object_list %}
     <li>
         <a href="{{ lesson.get_absolute_url }}">{{ lesson.title }}</a>
-        {% get_translation lesson request.session.lang|default:"en" as translation %}
+        {% get_translation lesson LANGUAGE_CODE|default:"en" as translation %}
         {{ translation.intro_html|safe }}
     </li>
     {% empty %}

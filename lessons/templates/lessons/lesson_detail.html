@@ -12,7 +12,7 @@
         <h1>{{ object.title }}</h1>
         <p><time datetime="{{ object.updated_at }}">{{ object.updated_at|date:"M j, Y" }}</time></p>
     </header>
-    {% get_translation object request.session.lang|default:"en" as translation %}
+    {% get_translation object LANGUAGE_CODE|default:"en" as translation %}
     <section>
         {{ object.video|oembed:"960x720" }}
         {{ translation.body_html|safe }}

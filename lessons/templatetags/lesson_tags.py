@@ -16,5 +16,9 @@ def get_translation(lesson, language):
         translation = Translation.objects.get(
             lesson_id=lesson.pk, language=language)
     except Translation.DoesNotExist:
-        translation = None
+        try:
+            translation = Translation.objects.get(
+                lesson_id=lesson.pk, language="en")
+        except Translation.DoesNotExist:
+            translation = None
     return translation
