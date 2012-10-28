@@ -2,7 +2,7 @@ from django.contrib.auth.models import User
 from django.db import models
 from django.template.defaultfilters import slugify
 
-from gswd.utils.redis import get_redis_connection
+from gswd.utils import get_redis_connection
 
 
 class Question(models.Model):
