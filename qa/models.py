@@ -71,12 +71,12 @@ class Answer(models.Model):
         return red.zincrby(self.question.redis_key, self.pk, 1)
 
     @property
-    def rank(self):
+    def score(self):
         """
         Return the answer's score from Redis
         """
         red = get_redis_connection()
-        return red.zrevrank(self.question.redis_key, self.pk)
+        return red.zscore(self.question.redis_key, self.pk)
 
 
 class AnswerComment(models.Model):
