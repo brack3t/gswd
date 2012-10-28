@@ -2,8 +2,7 @@ from django.contrib.auth.models import User
 from django.db import models
 from django.template.defaultfilters import slugify
 
-import redis
-red = redis.StrictRedis(host="localhost", port=6379, db=0)
+from gswd.utils.redis import get_redis_connection
 
 
 class Question(models.Model):
@@ -60,6 +59,7 @@ class Answer(models.Model):
         super(Answer, self).save(*args, **kwargs)
 
         if create_key:
+            red = get_redis_connection()
             red.zadd(self.question.redis_key, 0, self.pk)
 
     @property
@@ -67,6 +67,7 @@ class Answer(models.Model):
         """
         Increment the answers score by 1
         """
+        red = get_redis_connection()
         return red.zincrby(self.question.redis_key, self.pk, 1)
 
     @property
@@ -74,6 +75,7 @@ class Answer(models.Model):
         """
         Return the answer's score from Redis
         """
+        red = get_redis_connection()
         return red.zrevrank(self.question.redis_key, self.pk)
 
 
