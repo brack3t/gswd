@@ -13,14 +13,14 @@
     </section>
 </article>
 
-{% if object.answers.all %}
+{% if ranked_answers %}
 <h1>Answers</h1>
 
-    {% for answer in object.answers.all %}
+    {% for answer in ranked_answers %}
     <article>
         <header>
-            <h2>{{ answer.user.get_full_name }}</h2>
-            <p><time datetime="{{ object.updated_at }}">{{ object.updated_at|date:"M j, Y" }}</time></p>
+            <h2>{{ answer.score }} | {{ answer.user.get_full_name }}</h2>
+            <p><time datetime="{{ answer.updated_at }}">{{ answer.updated_at|date:"M j, Y" }}</time></p>
         </header>
         <section>
             <p>{{ answer.answer }}</p>

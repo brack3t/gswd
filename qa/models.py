@@ -16,6 +16,9 @@ class Question(models.Model):
     updated_at = models.DateTimeField(auto_now=True, editable=False)
     slug = models.SlugField(db_index=True, editable=False, max_length=255)
 
+    class Meta:
+        ordering = ["-created_at"]
+
     def __unicode__(self):
         return self.title
 
