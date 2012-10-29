@@ -1,6 +1,6 @@
 -i https://simple.crate.io/
 
-Django==1.4.1
+Django==1.4.2
 distribute==0.6.24
 psycopg2==2.4.5
 wsgiref==0.1.2
