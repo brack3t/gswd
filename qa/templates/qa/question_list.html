@@ -1,0 +1,15 @@
+{% extends "_layouts/base.html" %}
+
+{% block page_title %}Questions {{ block.super }}{% endblock %}
+
+{% block content %}
+<ol>
+    {% for question in object_list %}
+    <li>
+        <a href="{% url qa:detail question.slug %}">{{ question.title }}</a>
+    </li>
+    {% empty %}
+    <li>No questions here!</li>
+    {% endfor %}
+</ol>
+{% endblock %}

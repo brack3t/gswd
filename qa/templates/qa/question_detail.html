@@ -1,0 +1,52 @@
+{% extends "_layouts/base.html" %}
+
+{% block page_title %}{{ object.title }} | Questions {{ block.super }}{% endblock %}
+
+{% block content %}
+<article>
+    <header>
+        <h1>{{ object.title }}</h1>
+        <p><time datetime="{{ object.updated_at }}">{{ object.updated_at|date:"M j, Y" }}</time></p>
+    </header>
+    <section>
+        {{ object.question }}
+    </section>
+</article>
+
+{% if object.answers.all %}
+<h1>Answers</h1>
+
+    {% for answer in object.answers.all %}
+    <article>
+        <header>
+            <h2>{{ answer.user.get_full_name }}</h2>
+            <p><time datetime="{{ object.updated_at }}">{{ object.updated_at|date:"M j, Y" }}</time></p>
+        </header>
+        <section>
+            <p>{{ answer.answer }}</p>
+        </section>
+        {% if answer.comments.all %}
+        <h2>Comments</h2>
+
+            {% for comment in answer.comments.all %}
+            <article>
+                <header>
+                    <h3>{{ comment.user.get_full_name }}</h3>
+                    <p><time datetime="{{ object.updated_at }}">{{ object.updated_at|date:"M j, Y" }}</time></p>
+                </header>
+                <section>
+                    <p>{{ comment.comment }}</p>
+                </section>
+            </article>
+            {% endfor %}
+
+        {% endif %}
+    </article>
+    {% endfor %}
+
+{% endif %}
+
+{% endblock %}
+
+{% block body_js %}
+{% endblock %}
