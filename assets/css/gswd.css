@@ -2,3 +2,6 @@ html,body{min-height:100%;background:none;}
 html{background:url(/static/img/graphy.png);background-size:80px 160px;}
 h1.gswd{font-family:"Rock Salt","Marker Felt","Helvetica Neue",helvetica,arial,cursive;}
 header[rel="banner"],#header{margin-top:2em;margin-bottom:1em;height:200px;background:url(/static/img/gswdlogo.svg) center center no-repeat;background-size:99.999% 200px;}header[rel="banner"] a,#header a{display:block;height:100%;text-align:center;text-indent:-20000em;line-height:200px;}
+.white{background:#fff;}
+.padded{padding:1em;}
+.bottom-margin{margin-bottom:1em;}

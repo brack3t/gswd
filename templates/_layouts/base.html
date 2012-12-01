@@ -72,8 +72,9 @@
             </div>
         </div>
 
-
-        {% block content %}{% endblock %}
+        <div class="white padded bottom-margin">
+            {% block content %}{% endblock %}
+        </div>
 
         <footer aria-role="banner" role="banner" id="footer">
             <p>&copy; {% now "Y" %} Brack3t {% trans "and all contributors." %}</p>

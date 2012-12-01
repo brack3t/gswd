@@ -4,20 +4,24 @@
 {% block page_title %}{% endblock %}
 
 {% block content %}
-<p class="lead">Welcome fucking home.</p>
-
-<div class="row-fluid">
-    
-</div>
+<p class="lead">{% trans "Welcome to Getting Started With Django" %}</p>
 
 <div class="row-fluid">
     <div class="span4">
-        <p>left side</p>
+        <h2 class="lead">{% trans "You have:" %}</h2>
+        <ul>
+            <li>{% trans "Completed" %} <a href="http://learnpythonthehardway.org">{% trans "Learn Python The Hard Way" %}</a></li>
+            <li>{% trans "Completed" %} <a href="https://docs.djangoproject.com/en/1.4/intro/tutorial01/">{% trans "the official Polls tutorial" %}</a></li>
+            <li>{% trans "Installed" %} <a href="https://www.virtualbox.org">{% trans "VirtualBox" %}</a></li>
+            <li>{% trans "Installed" %} <a href="http://vagrantup.com">{% trans "Vagrant" %}</a></li>
+        </ul>
     </div>
     <div class="span4">
-        <p>center</p>
+        <h2 class="lead">{% trans "Then it's time to" %}</h2>
+        <a href="https://s3.amazonaws.com/GSWD/gswd-vagrant.zip" class="btn btn-large btn-primary">{% trans "Download the ZIP" %}</a>
     </div>
     <div class="span4">
+        <h2 class="lead">{% trans "Or jump to a lesson" %}</h2>
         {% load lesson_tags %}
         {% all_lessons as lessons %}
         {% if lessons %}
