@@ -4,37 +4,41 @@
 {% block page_title %}{% endblock %}
 
 {% block content %}
-<p class="lead">{% trans "Welcome to Getting Started With Django" %}</p>
-
 <div class="row-fluid">
-    <div class="span4">
-        <h2 class="lead">{% trans "You have:" %}</h2>
-        <ul>
-            <li>{% trans "Completed" %} <a href="http://learnpythonthehardway.org">{% trans "Learn Python The Hard Way" %}</a></li>
-            <li>{% trans "Completed" %} <a href="https://docs.djangoproject.com/en/1.4/intro/tutorial01/">{% trans "the official Polls tutorial" %}</a></li>
-            <li>{% trans "Installed" %} <a href="https://www.virtualbox.org">{% trans "VirtualBox" %}</a></li>
-            <li>{% trans "Installed" %} <a href="http://vagrantup.com">{% trans "Vagrant" %}</a></li>
-        </ul>
+    <div class="span7">
+        <h1 class="gswd">{% trans "So, you want to learn Django?" %}</h1>
+        <p>"Getting Started with Django" (or <abbr class="initialism">GSWD</abbr>) is a series of video-based lessons meant to take you from <em>novice</em> to <em>competent</em> <a href="#ft1" id="lft1" class="footnote-link">[1]</a>, or maybe even beyond.</p>
+        <p>Each lesson will cover many facets and best practices of modern Django web development and will feature a video and a text transcript to follow along with. Every video is available for download or online streaming and there's a forum for help with tricky areas, too.</p>
+        <p>To get started, make sure you've covered the points listed in the <strong>Requirements</strong> section and the jump to the first video through the dropdown menu at the top of the screen.</p>
+        <p class="lead">Good luck!</p>
     </div>
-    <div class="span4">
-        <h2 class="lead">{% trans "Then it's time to" %}</h2>
-        <a href="https://s3.amazonaws.com/GSWD/gswd-vagrant.zip" class="btn btn-large btn-primary">{% trans "Download the ZIP" %}</a>
-    </div>
-    <div class="span4">
-        <h2 class="lead">{% trans "Or jump to a lesson" %}</h2>
-        {% load lesson_tags %}
-        {% all_lessons as lessons %}
-        {% if lessons %}
+    <div class="span4 pull-right">
+        <h1 class="gswd">{% trans "Requirements" %}</h1>
         <ol>
-            {% for lesson in lessons %}
-            <li><a href="{{ lesson.get_absolute_url }}">{{ lesson.title }}</a></li>
-            {% endfor %}
+            <li>
+                <p>{% trans "You've completed (at least most of)" %} <a href="http://learnpythonthehardway.org">Learn Python the Hard Way</a>.</p>
+                <p>{% trans "This implies you also:" %}</p>
+                <ul>
+                    <li>{% trans "Have a terminal you're comfortable with." %}</li>
+                    <li>{% trans "Have a text editor you like." %}</li>
+                </ul>
+            </li>
+            <li>{% trans "You've completed the official Django tutorial" %}, <a href="https://docs.djangoproject.com/en/1.4/intro/tutorial01/">{% trans "also known as the Polls tutorial." %}</a></li>
+            <li>{% trans "You've installed both" %} <a href="http://vagrantup.com">Vagrant</a> {% trans "and" %} <a href="http://virtualbox.org">VirtualBox</a>.</li>
         </ol>
-        {% else %}
-        <p>right side</p>
-        {% endif %}
-        <a href="{% url lessons:list %}">{% trans "All Lessons" %}</a>
     </div>
 </div>
 
+<div class="row-fluid">
+    <div class="span4 offset4 center">
+        <h1 class="gswd bottom-margin top-margin">{% trans "All set?" %}</h1>
+        <p><a href="http://s3.amazonaws.com/GSWD/gswd-vagrant.zip" class="btn btn-block btn-tall btn-primary btn-inverse">{% trans "Download the VM" %}</a></p>
+    </div>
+</div>
+
+<div class="footnotes">
+    <ol>
+        <li id="ft1">Loosely, as defined by the <a href="https://en.wikipedia.org/wiki/Dreyfus_model_of_skill_acquisition">Dreyfus model of skill acquisition</a>. <a href="#lft1">&crarr;</a></li>
+    </ol>
+</div>
 {% endblock %}
