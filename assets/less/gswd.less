@@ -109,9 +109,7 @@ header[rel="banner"],
     padding-top: 1em;
 }
 
-.center {
-    text-align: center;
-}
+.center { text-align: center; }
 
 /* Retina rules
 ====================================================== */
@@ -126,4 +124,12 @@ only screen and (min-resolution: 192dpi) {
     #header {
         background-image: url(/static/img/graphy_@2X.png);
     }
+}
+
+/* Responsive rules
+====================================================== */
+
+@media (max-width: 768px) {
+    .center { text-align: left; }
+    .offset4 { margin-left: 0 !important; }
 }

@@ -7,10 +7,10 @@
 <div class="row-fluid">
     <div class="span7">
         <h1 class="gswd">{% trans "So, you want to learn Django?" %}</h1>
-        <p>"Getting Started with Django" (or <abbr class="initialism">GSWD</abbr>) is a series of video-based lessons meant to take you from <em>novice</em> to <em>competent</em> <a href="#ft1" id="lft1" class="footnote-link">[1]</a>, or maybe even beyond.</p>
-        <p>Each lesson will cover many facets and best practices of modern Django web development and will feature a video and a text transcript to follow along with. Every video is available for download or online streaming and there's a forum for help with tricky areas, too.</p>
-        <p>To get started, make sure you've covered the points listed in the <strong>Requirements</strong> section and the jump to the first video through the dropdown menu at the top of the screen.</p>
-        <p class="lead">Good luck!</p>
+        <p>{% trans '"Getting Started with Django" (or' %} <abbr class="initialism">GSWD</abbr>{% trans ") is a series of video-based lessons meant to take you from" %} <em>{% trans "novice" %}</em> {% trans "to" %} <em>{% trans "competent" %}</em> <a href="#ft1" id="lft1" class="footnote-link">[1]</a>{% trans ", or maybe even beyond." %}</p>
+        <p>{% trans "Each lesson will cover many facets and best practices of modern Django web development and will feature a video and a text transcript to follow along with. Every video is available for download or online streaming and there's a forum for help with tricky areas, too." %}</p>
+        <p>{% trans "To get started, make sure you've covered the points listed in the" %} <strong>{% trans "Requirements" %}</strong> {% trans "section and then jump to the first video through the dropdown menu at the top of the screen." %}</p>
+        <p class="lead">{% trans "Good luck!" %}</p>
     </div>
     <div class="span4 pull-right">
         <h1 class="gswd">{% trans "Requirements" %}</h1>
@@ -38,7 +38,7 @@
 
 <div class="footnotes">
     <ol>
-        <li id="ft1">Loosely, as defined by the <a href="https://en.wikipedia.org/wiki/Dreyfus_model_of_skill_acquisition">Dreyfus model of skill acquisition</a>. <a href="#lft1">&crarr;</a></li>
+        <li id="ft1">{% trans "Loosely, as defined by the" %} <a href="https://en.wikipedia.org/wiki/Dreyfus_model_of_skill_acquisition">Dreyfus {% trans "model of skill acquisition" %}</a>. <a href="#lft1">&crarr;</a></li>
     </ol>
 </div>
 {% endblock %}

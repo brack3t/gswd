@@ -23,4 +23,4 @@ header[rel="banner"],#header{background:url(/static/img/graphy.png);background-p
 .footnotes{font-size:0.75em;}
 .btn-tall{font-size:2em;padding-bottom:1em;padding-top:1em;}
 .center{text-align:center;}
-@media only screen and (-webkit-min-device-pixel-ratio:2),only screen and (min-resolution:192dpi){html{background-image:url(/static/img/graphy_@2X.png);} header[rel="banner"],#header{background-image:url(/static/img/graphy_@2X.png);}}
+@media only screen and (-webkit-min-device-pixel-ratio:2),only screen and (min-resolution:192dpi){html{background-image:url(/static/img/graphy_@2X.png);} header[rel="banner"],#header{background-image:url(/static/img/graphy_@2X.png);}}@media (max-width:768px){.center{text-align:left;} .offset4{margin-left:0 !important;}}
