@@ -14,3 +14,4 @@ misaka==1.0.2
 micawber==0.2.5
 django-storages==1.1.5
 boto==2.6.0
+raven==2.0.10

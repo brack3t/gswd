@@ -161,6 +161,7 @@ THIRD_PARTY_APPS = (
     "social_auth",
     "micawber.contrib.mcdjango",
     "storages",
+    "raven.contrib.django",
 )
 
 OUR_APPS = (
