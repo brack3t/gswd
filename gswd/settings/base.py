@@ -74,6 +74,11 @@ STATICFILES_FINDERS = (
     "django.contrib.staticfiles.finders.AppDirectoriesFinder",
 )
 
+DEFAULT_FILE_STORAGE = "storages.backends.s3.S3Storage"
+AWS_STORAGE_BUCKET_NAME = "gswd-files"
+STATICFILES_STORAGE = "storages.backends.s3boto.S3BotoStorage"
+
+
 # List of callables that know how to import templates from various sources.
 TEMPLATE_LOADERS = (
     # ("django.template.loaders.cached.Loader", (
@@ -160,6 +165,7 @@ THIRD_PARTY_APPS = (
     "south",
     "social_auth",
     "micawber.contrib.mcdjango",
+    "storages",
 )
 
 OUR_APPS = (
