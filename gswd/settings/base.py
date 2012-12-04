@@ -60,7 +60,7 @@ STATIC_ROOT = root("static")
 
 # URL prefix for static files.
 # Example: "http://media.lawrence.com/static/"
-STATIC_URL = "/static/"
+STATIC_URL = "http://static.gettingstartedwithdjango.com/"
 
 # Additional locations of static files
 STATICFILES_DIRS = (
@@ -75,7 +75,7 @@ STATICFILES_FINDERS = (
 )
 
 DEFAULT_FILE_STORAGE = "storages.backends.s3.S3Storage"
-AWS_STORAGE_BUCKET_NAME = "gswd-files"
+AWS_STORAGE_BUCKET_NAME = "static.gettingstartedwithdjango.com"
 STATICFILES_STORAGE = "storages.backends.s3boto.S3BotoStorage"
 
 
