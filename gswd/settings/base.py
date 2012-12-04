@@ -78,7 +78,6 @@ DEFAULT_FILE_STORAGE = "storages.backends.s3.S3Storage"
 AWS_STORAGE_BUCKET_NAME = "static.gettingstartedwithdjango.com"
 STATICFILES_STORAGE = "storages.backends.s3boto.S3BotoStorage"
 
-
 # List of callables that know how to import templates from various sources.
 TEMPLATE_LOADERS = (
     # ("django.template.loaders.cached.Loader", (
@@ -144,10 +143,6 @@ TEMPLATE_DIRS = (
     root("templates"),
 )
 
-GRAPPELLI_APPS = (
-    "grappelli",
-)
-
 DJANGO_APPS = (
     "django.contrib.auth",
     "django.contrib.contenttypes",
@@ -173,7 +168,7 @@ OUR_APPS = (
     "qa",
 )
 
-INSTALLED_APPS = GRAPPELLI_APPS + DJANGO_APPS + THIRD_PARTY_APPS + OUR_APPS
+INSTALLED_APPS = DJANGO_APPS + THIRD_PARTY_APPS + OUR_APPS
 
 # A sample logging configuration. The only tangible logging
 # performed by this configuration is to send an email to
