@@ -72,7 +72,6 @@ STATICFILES_DIRS = (
 STATICFILES_FINDERS = (
     "django.contrib.staticfiles.finders.FileSystemFinder",
     "django.contrib.staticfiles.finders.AppDirectoriesFinder",
-#    'django.contrib.staticfiles.finders.DefaultStorageFinder',
 )
 
 # List of callables that know how to import templates from various sources.
@@ -93,6 +92,7 @@ MIDDLEWARE_CLASSES = (
     "django.contrib.auth.middleware.AuthenticationMiddleware",
     "django.contrib.messages.middleware.MessageMiddleware",
     "django.middleware.clickjacking.XFrameOptionsMiddleware",
+    "django.contrib.flatpages.middleware.FlatpageFallbackMiddleware",
 )
 
 TEMPLATE_CONTEXT_PROCESSORS = (
@@ -152,6 +152,7 @@ DJANGO_APPS = (
     "django.contrib.staticfiles",
     "django.contrib.admin",
     "django.contrib.admindocs",
+    "django.contrib.flatpages",
 )
 
 THIRD_PARTY_APPS = (

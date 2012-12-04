@@ -1,0 +1,10 @@
+{% extends "_layouts/base.html" %}
+{% load i18n %}
+
+{% block page_title %}404 {{ block.super }}{% endblock %}
+
+{% block content %}
+<h1>404</h1>
+<p>{% trans "Oops, looks like that page doesn't exist." %}</p>
+<p><a href="{% url home %}">{% trans "Start over at the home page?" %}</p>
+{% endblock %}
