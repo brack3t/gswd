@@ -1,9 +1,10 @@
 {% extends "_layouts/base.html" %}
 {% load lesson_tags %}
 
-{% block page_title %}Lessons {{ block.super }}{% endblock %}
+{% block page_title %}{{ headline }} {{ block.super }}{% endblock %}
 
 {% block content %}
+<h2>{{ headline }}</h2>
 <ol>
     {% for lesson in object_list %}
     <li>

@@ -1,8 +1,10 @@
 from django.conf.urls import patterns, url
 
-from lessons.views import LessonListView, LessonDetailView
+from lessons import views
 
 urlpatterns = patterns('',
-    url(r'^$', LessonListView.as_view(), name="list"),
-    url(r'^(?P<slug>[-_\w]+)/$', LessonDetailView.as_view(), name="detail"),
+    url(r'^$', views.LessonListView.as_view(), name="list"),
+    url(r'^search/$', views.LessonSearchView.as_view(), name="search"),
+    url(r'^(?P<slug>[-_\w]+)/$', views.LessonDetailView.as_view(),
+        name="detail"),
 )

@@ -37,7 +37,7 @@
                                 </ol>
                             </li>
                         </ul>
-                        <form class="navbar-form form-search pull-left" action="#" method="GET">
+                        <form class="navbar-form form-search pull-left" action="{% url lessons:search %}" method="GET">
                             <div class="input-append">
                                 <input type="search" class="input-medium search-query" name="q">
                                 <button type="submit" class="btn">{% trans "Search" %}</button>
@@ -65,7 +65,7 @@
                                     {% if user.is_authenticated %}
                                     <li><a href="{% url logout %}">{% trans "Logout" %}</a></li>
                                     {% else %}
-                                    <li><a href="{% url socialauth_begin 'github' %}?{{ redirect_querystring }}">{% trans "Go to your account" %}</a></li>
+                                    <li><a href="{% url socialauth_begin 'github' %}?{{ redirect_querystring }}">{% trans "Get your account" %}</a></li>
                                     {% endif %}
                                 </ul>
                             </li>
@@ -78,6 +78,17 @@
         <header aria-role="banner" rel="banner" id="header">
             <h1 class="gswd"><a href="/">Getting Started with Django</a></h1>
         </header>
+        
+        {% if messages %}
+        <div class="padded">
+            {% for message in messages %}
+                <div class="alert {% if message.tags %}alert-{{ message.tags }}{% endif %}">
+                    <button type="button" class="close" data-dismiss="alert">&times;</button>
+                    {{ message }}
+                </div>
+            {% endfor %}
+        </div>
+        {% endif %}
 
         <div class="padded bottom-margin">
             {% block content %}{% endblock %}
@@ -100,6 +111,7 @@
     </div>
     <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/1.8.2/jquery.min.js"></script>
     <script src="{{ STATIC_URL }}js/bootstrap/bootstrap-transition.js"></script>
+    <script src="{{ STATIC_URL }}js/bootstrap/bootstrap-alert.js"></script>
     <script src="{{ STATIC_URL }}js/bootstrap/bootstrap-dropdown.js"></script>
     <script src="{{ STATIC_URL }}js/bootstrap/bootstrap-button.js"></script>
     <script src="{{ STATIC_URL }}js/bootstrap/bootstrap-collapse.js"></script>
